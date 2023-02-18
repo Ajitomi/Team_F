@@ -2,6 +2,8 @@
 
 #include "AbstractScene.h"
 #include"DxLib.h"
+#include "KeyManager.h"
+
 
 class GameMainScene :public AbstractScene
 {
@@ -14,7 +16,32 @@ private:
 	int PQuestionBox;
 
 
+
+	
+
+
 public:
+
+
+	struct Question
+	{
+		int number;
+		char sentence[100];
+		int correct;
+	};
+
+	int life;
+
+	int question_number;
+	int question_count;
+
+	bool question_flag;
+
+	Question question[21];
+
+	GameMainScene();
+	
+	/*		
 	GameMainScene() {
 		Life = 3;
 		Cnt_Question = 0;
@@ -24,9 +51,14 @@ public:
 		PQuestionBox = LoadGraph("Image/PQuestionBox.png");
 		
 	};
+	*/
+
+
 	~GameMainScene() {};
 
 	virtual AbstractScene* Update();
 
-	virtual void  Draw() const;
+	virtual void  Draw()const;
+
+
 };
