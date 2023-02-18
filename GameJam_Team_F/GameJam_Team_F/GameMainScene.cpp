@@ -106,14 +106,16 @@ void GameMainScene::Draw() const
 
 	MaxQuestion = 4;
 	QuestionPadding = 20;
-	QuestioRange = ((1280 - 50) / MaxQuestion) - QuestionPadding;
+	QuestioRange = ((1280 - 100) / MaxQuestion) - QuestionPadding;
 
 
 
 	for (int i = 0; i < MaxQuestion; i++)
 	{
-		DrawBox((50 + (QuestioRange * i)) + (QuestionPadding * i), 550, ((50 + (QuestioRange * i)) + QuestioRange) + QuestionPadding * i, 650, 0x555555, true);
-		DrawExtendGraph((50 + (QuestioRange * i)) + (QuestionPadding * i), 550, ((50 + (QuestioRange * i)) + QuestioRange) + QuestionPadding * i,650, PQuestionBox, true);
+		DrawBox((50 + (QuestioRange * i)) + (QuestionPadding * i + (QuestionPadding / 2)), 550,
+				((50 + (QuestioRange * i)) + QuestioRange) + QuestionPadding * i + (QuestionPadding / 2), 650, 0x555555, true);
+		DrawExtendGraph((50 + (QuestioRange * i)) + (i * QuestionPadding+ (QuestionPadding/2)), 550,
+						((50 + (QuestioRange * i)) + QuestioRange) + (i * QuestionPadding + (QuestionPadding / 2)), 650, PQuestionBox, true);
 	}
 
 
