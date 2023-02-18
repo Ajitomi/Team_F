@@ -6,6 +6,12 @@ int wait_time = 0;
 
 GameMainScene::GameMainScene()
 {
+	
+
+	LifeImage = LoadGraph("Image/life.png");
+	QuestionBox = LoadGraph("Image/QuestionBox.png");
+	PQuestionBox = LoadGraph("Image/PQuestionBox.png");
+
 
 	life = 3;
 
@@ -76,52 +82,33 @@ AbstractScene* GameMainScene::Update()
 
 void GameMainScene::Draw() const
 {
-	//1280, 720
-	DrawBox(0, 0, 1280, 720, 0x200303, true);
-	DrawBox(0, 0, 1280, 720, 0x090909, true);
 
-
-
-	for (int i = 0; i < 1280; i+=50)
-	{
-		DrawLine(i, 0, i, 720, 0x555522, true);
-		DrawLine(0, i, 1280, i, 0x335533, true);
-		if (i % 100 == 0) {
-			DrawLine(i, 0, i, 720, 0x770000, true);
-			DrawLine(0, i, 1280, i, 0x770000, true);
-		}
-	}
-
-	DrawLine(1280 / 2, 0, 1280 / 2, 720, 0x008800, true);
-	DrawLine(0, 720 / 2, 1280, 720 / 2, 0x888800, true);
-
-
-//�����w���\��
+//背景
 	DrawBox(350, 100, 650, 500, 0x553333, true);
 
-//life�\��
-	for (int i = 0; i < Life; i++)
+//life表示
+	for (int i = 0; i < life; i++)
 	{
 		//DrawCircle((i * 100) + 50, 50, 40, 0x997777, true);
 		DrawGraph((i * 100) + 10, 10, LifeImage, true);
 	}
 
-//���\��
+//問題枠
 
 	DrawBox(750, 150, 1100, 350, 0x222222, true);
 	DrawGraph(750, 150, QuestionBox, true);
 
-//�I�����\��
+//選択肢枠
 
-	int MaxQuestion;		//��萔
-	int QuestionPadding;	//�I�����Ԃ̋���
-	int QuestioRange;		//�I�����̕�
+	int MaxQuestion;		//選択しの数
+	int QuestionPadding;	//選択肢の隙間
+	int QuestioRange;		//選択肢の幅
 
 	MaxQuestion = 4;
 	QuestionPadding = 20;
 	QuestioRange = ((1280 - 50) / MaxQuestion) - QuestionPadding;
 
-	//550
+
 
 	for (int i = 0; i < MaxQuestion; i++)
 	{

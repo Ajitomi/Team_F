@@ -41,17 +41,7 @@ public:
 
 	GameMainScene();
 	
-	/*		
-	GameMainScene() {
-		Life = 3;
-		Cnt_Question = 0;
 
-		LifeImage = LoadGraph("Image/life.png");
-		QuestionBox = LoadGraph("Image/QuestionBox.png");
-		PQuestionBox = LoadGraph("Image/PQuestionBox.png");
-		
-	};
-	*/
 
 
 	~GameMainScene() {};
