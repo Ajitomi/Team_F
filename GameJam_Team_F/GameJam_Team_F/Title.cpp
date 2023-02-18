@@ -34,5 +34,5 @@ AbstractScene* Title::Update()
 
 void Title::Draw() const
 {
-	DrawGraph(640, 50, TitleLogoImage, FALSE);
+	DrawGraph(390, 100, TitleLogoImage, FALSE);
 }
