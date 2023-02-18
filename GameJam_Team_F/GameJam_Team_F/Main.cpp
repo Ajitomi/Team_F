@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "SceneManager.h"
+#include "GameMainScene.h"
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -12,7 +13,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	SetDrawScreen(DX_SCREEN_BACK);	//描画先画面を裏に
 
-	SceneManager scene_mng(new);
+	SceneManager scene_mng(new GameMainScene());
 
 	//ゲームループ
 	while ((ProcessMessage() == 0) && (scene_mng.Update() != nullptr))
