@@ -8,11 +8,15 @@ class Title:public AbstractScene
 {
 private:
 	int MenuNum;
+	int MenuY;
+	int KeyY;
+	int flgY;
+	int Cr;
 	
 	//int TitleImage;
 	int TitleLogoImage;
 	int StartSE;
-	int EndSE;
+	int CarsolSE;
 	int TitleBGM;
 
 public:
@@ -22,4 +26,6 @@ public:
 	virtual void Draw() const override;
 
 };
+
+
 

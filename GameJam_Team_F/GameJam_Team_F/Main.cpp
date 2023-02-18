@@ -20,6 +20,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	while ((ProcessMessage() == 0) && (scene_mng.Update() != nullptr))
 	{
 
+		//ESCAPEÉLÅ[Ç≈èIóπ
+		if (CheckHitKey(KEY_INPUT_ESCAPE) == 1) DxLib_End();
+
 		ClearDrawScreen();	//âÊñ ÇÃèâä˙âª
 
 		scene_mng.Draw();
