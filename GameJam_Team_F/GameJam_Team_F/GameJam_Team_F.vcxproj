@@ -153,14 +153,16 @@
   <ItemGroup>
     <ClCompile Include="AbstractScene.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
+    <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Mentally_Unstable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScene.h" />
     <ClInclude Include="GameMainScene.h" />
+    <ClInclude Include="KeyManager.h" />
+    <ClInclude Include="Mentally_Unstable.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Title.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
