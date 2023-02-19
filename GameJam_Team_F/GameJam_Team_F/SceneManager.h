@@ -1,5 +1,5 @@
 #pragma once
-
+#include"DxLib.h"
 #include "AbstractScene.h"
 
 class SceneManager :public AbstractScene
