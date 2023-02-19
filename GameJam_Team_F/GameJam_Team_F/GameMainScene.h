@@ -21,9 +21,9 @@ private:
 		int number;				//問題のナンバー
 		char sentence[100];		//問題文
 		int correct;			//正解のボタン番号
-		char answer_1[50];
-		char answer_2[50];
-		char answer_3[50];
+		char answer_1[100];
+		char answer_2[100];
+		char answer_3[100];
 	};
 
 	int life;					//HP
@@ -37,7 +37,7 @@ private:
 
 	bool question_flag;			//問題を解いてる最中か判定するフラグ
 
-	Question question[21];		//全21門
+	Question question[16];		//全21門
 
 public:
 

@@ -49,9 +49,9 @@ GameMainScene::GameMainScene()
 				&question[i].number,
 				&question[i].correct,
 				question[i].sentence, 100,
-				question[i].answer_1, 50,
-				question[i].answer_2, 50,
-				question[i].answer_3, 50);
+				question[i].answer_1, 100,
+				question[i].answer_2, 100,
+				question[i].answer_3, 100);
 		}
 
 		return;
@@ -92,7 +92,7 @@ AbstractScene* GameMainScene::Update()
 
 	if (question_flag == false)
 	{
-		question_number = GetRand(20);
+		question_number = GetRand(15);
 		question_flag = true;
 	}
 
@@ -171,7 +171,7 @@ void GameMainScene::Draw() const
 	int QuestionPadding;	//選択肢の隙間
 	int QuestioRange;		//選択肢の幅
 
-	MaxQuestion = 4;
+	MaxQuestion = 3;
 	QuestionPadding = 20;
 	QuestioRange = ((1280 - 100) / MaxQuestion) - QuestionPadding;
 
@@ -186,26 +186,10 @@ void GameMainScene::Draw() const
 				((50 + (QuestioRange * i)) + QuestioRange) + (i * QuestionPadding + (QuestionPadding / 2)), 650, PQuestionBox, true);
 	}
 
-#ifdef _DEBUG
-	//for (int i = 0; i < 21; i++)
-	//{
-	//	/*DrawFormatString(0, 20 * i, GetColor(255, 255, 255), "QuestionNumber = %d", question[i].number);*/
-	//	DrawFormatString(0, 20 * i, GetColor(255, 255, 255), "QuestionSentence = %s", question[i].sentence);
-	//	DrawFormatString(580, 20 * i, GetColor(255, 255, 255), "Answer_1Sentence = %s", question[i].answer_1);
-	//	DrawFormatString(900, 20 * i, GetColor(255, 255, 255), "QuestionSentence = %s", question[i].answer_2);
-	//}
-	/*DrawFormatString(0, 0, GetColor(255, 255, 255), "Life = %d", life);
-	DrawFormatString(150, 0, GetColor(255, 255, 255), "Number = %d", question_number);
-	DrawFormatString(300, 0, GetColor(255, 255, 255), "Correct = %d", question[question_number].correct);
-	DrawFormatString(450, 0, GetColor(255, 255, 255), "flag = %d", question_flag);*/
-#endif
-
-	/*SetFontSize(25);*/
 	DrawFormatString(770, 170, GetColor(255, 255, 255), "第%d門", question_count);
 	DrawFormatString(770, 250, 0xFFFFFF, "%s", question[question_number].sentence);
 
 	DrawFormatString((100 + (QuestioRange * 0)) + (QuestionPadding * 0 + (QuestionPadding / 2)), 595, 0xFFFFFF, "%s", question[question_number].answer_1);
 	DrawFormatString((100 + (QuestioRange * 1)) + (QuestionPadding * 1 + (QuestionPadding / 2)), 595, 0xFFFFFF, "%s", question[question_number].answer_2);
 	DrawFormatString((100 + (QuestioRange * 2)) + (QuestionPadding * 2 + (QuestionPadding / 2)), 595, 0xFFFFFF, "%s", question[question_number].answer_3);
-	//DrawFormatString((100 + (QuestioRange * 3)) + (QuestionPadding * 3 + (QuestionPadding / 2)), 595, 0xFFFFFF, "%s", question[question_number].answer_1);
 }
