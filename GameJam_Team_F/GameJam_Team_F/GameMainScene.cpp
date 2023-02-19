@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "KeyManager.h"
 #include"GameClear.h"
+#include "GameOver.h"
 
 int wait_time = 0;
 
@@ -91,7 +92,7 @@ AbstractScene* GameMainScene::Update()
 	}
 	else if (answer_namber != 0 && answer_namber != question[question_number].correct)
 	{
-		/*life--;*/
+		life--;
 		question_count++;
 		answer_namber = 0;
 		question_flag = false;
@@ -106,6 +107,7 @@ AbstractScene* GameMainScene::Update()
 	if (life <= 0)
 	{
 		//GameOver
+		return new GameOverScene();
 	}
 
 	return this;
