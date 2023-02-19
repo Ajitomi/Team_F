@@ -5,6 +5,7 @@ class GameClear:public AbstractScene
 {
 private:
 	int g_ClearImage;
+	int desk;
 	int	g_WaitTime;			// 待ち時間
     int g_PosY;					// スクロール時のＹ座標
 public:
