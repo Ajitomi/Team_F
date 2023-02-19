@@ -6,7 +6,7 @@
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	SetMainWindowText("****");
+	SetMainWindowText("メンヘラでごメンヘラ");
 
 	ChangeWindowMode(TRUE);	//ウィンドウモードで起動
 	SetGraphMode(1280, 720, 32);	//ウィンドウサイズを設定
