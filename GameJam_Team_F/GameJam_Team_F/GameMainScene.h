@@ -1,11 +1,27 @@
 #pragma once
 
 #include "AbstractScene.h"
+#include"DxLib.h"
 #include "KeyManager.h"
+
 
 class GameMainScene :public AbstractScene
 {
 private:
+	int Life;
+	int Cnt_Question;
+
+	int LifeImage;
+	int QuestionBox;
+	int PQuestionBox;
+
+
+
+	
+
+
+public:
+
 
 	struct Question
 	{
@@ -25,12 +41,16 @@ private:
 
 	Question question[21];
 
-public:
-
 	GameMainScene();
+	
+
+
+
 	~GameMainScene() {};
 
 	virtual AbstractScene* Update();
 
 	virtual void  Draw()const;
+
+
 };

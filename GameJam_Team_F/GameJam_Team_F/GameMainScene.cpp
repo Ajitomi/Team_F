@@ -6,6 +6,12 @@ int wait_time = 0;
 
 GameMainScene::GameMainScene()
 {
+	
+
+	LifeImage = LoadGraph("Image/life.png");
+	QuestionBox = LoadGraph("Image/QuestionBox.png");
+	PQuestionBox = LoadGraph("Image/PQuestionBox.png");
+
 
 	life = 3;
 
@@ -43,6 +49,7 @@ GameMainScene::GameMainScene()
 	fclose(fp);
 
 }
+
 
 AbstractScene* GameMainScene::Update()
 {
@@ -100,6 +107,49 @@ AbstractScene* GameMainScene::Update()
 void GameMainScene::Draw() const
 {
 
+//背景
+	DrawBox(350, 100, 650, 500, 0x553333, true);
+
+//life表示
+	for (int i = 0; i < life; i++)
+	{
+		//DrawCircle((i * 100) + 50, 50, 40, 0x997777, true);
+		DrawGraph((i * 100) + 10, 10, LifeImage, true);
+	}
+
+//問題枠
+
+	DrawBox(750, 150, 1100, 350, 0x222222, true);
+	DrawGraph(750, 150, QuestionBox, true);
+
+//選択肢枠
+
+	int MaxQuestion;		//選択しの数
+	int QuestionPadding;	//選択肢の隙間
+	int QuestioRange;		//選択肢の幅
+
+	MaxQuestion = 4;
+	QuestionPadding = 20;
+	QuestioRange = ((1280 - 100) / MaxQuestion) - QuestionPadding;
+
+
+
+	for (int i = 0; i < MaxQuestion; i++)
+	{
+		DrawBox((50 + (QuestioRange * i)) + (QuestionPadding * i + (QuestionPadding / 2)), 550,
+				((50 + (QuestioRange * i)) + QuestioRange) + QuestionPadding * i + (QuestionPadding / 2), 650, 0x555555, true);
+		DrawExtendGraph((50 + (QuestioRange * i)) + (i * QuestionPadding+ (QuestionPadding/2)), 550,
+						((50 + (QuestioRange * i)) + QuestioRange) + (i * QuestionPadding + (QuestionPadding / 2)), 650, PQuestionBox, true);
+	}
+
+
+//����ڂ��\��
+
+
+
+
+
+
 #ifdef _DEBUG
 	/*for (int i = 0; i < 21; i++)
 	{
@@ -113,5 +163,5 @@ void GameMainScene::Draw() const
 #endif
 
 	DrawFormatString(510, 450, GetColor(255, 255, 255), "%s", question[question_number].sentence);
-	DrawFormatString(510, 430, GetColor(255, 255, 255), "��%d��", question_count);
+	DrawFormatString(510, 430, GetColor(255, 255, 255), "��%d��", question_count);
 }
