@@ -19,6 +19,8 @@ private:
 	int question_number;
 	int question_count;
 
+	int answer_namber;
+
 	bool question_flag;
 
 	Question question[21];

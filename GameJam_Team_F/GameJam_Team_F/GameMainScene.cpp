@@ -12,6 +12,8 @@ GameMainScene::GameMainScene()
 	question_number = 0;
 	question_count = 1;
 
+	answer_namber = 0;
+
 	question_flag = false;
 
 	FILE* fp;
@@ -45,27 +47,49 @@ GameMainScene::GameMainScene()
 AbstractScene* GameMainScene::Update()
 {
 
-	wait_time++;
-
-	if (question_flag == false && wait_time >= 600)
+	if (question_flag == false)
 	{
+		question_number = GetRand(20);
 		question_flag = true;
-		wait_time = 0;
-		question_number = GetRand(21);
 	}
 
-	if (KeyManager::OnClick(KEY_INPUT_A))
+	if (KeyManager::OnClick(KEY_INPUT_1) && question_flag == true)
 	{
-		wait_time = 0;
+		answer_namber = 1;
+	}
+	else if (KeyManager::OnClick(KEY_INPUT_2) && question_flag == true)
+	{
+		answer_namber = 2;
+	}
+	else if (KeyManager::OnClick(KEY_INPUT_3) && question_flag == true)
+	{
+		answer_namber = 3;
+	}
+	else if (KeyManager::OnClick(KEY_INPUT_4) && question_flag == true)
+	{
+		answer_namber = 4;
+	}
+
+	if (answer_namber == question[question_number].correct)
+	{
+		question_count++;
+		answer_namber = 0;
+		question_flag = false;
+	}
+	else if (answer_namber != 0 && answer_namber != question[question_number].correct)
+	{
+		life--;
+		question_count++;
+		answer_namber = 0;
 		question_flag = false;
 	}
 
-	if (question_count >= 7 && life > 0)
+	if (question_count > 7 && life > 0)
 	{
 		//GameClear
 	}
 
-	if (life < 0)
+	if (life <= 0)
 	{
 		//GameOver
 	}
@@ -85,6 +109,7 @@ void GameMainScene::Draw() const
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "Life = %d", life);
 	DrawFormatString(150, 0, GetColor(255, 255, 255), "Number = %d", question_number);
 	DrawFormatString(300, 0, GetColor(255, 255, 255), "Correct = %d", question[question_number].correct);
+	DrawFormatString(450, 0, GetColor(255, 255, 255), "Correct = %d", question_flag);
 #endif
 
 	DrawFormatString(510, 450, GetColor(255, 255, 255), "%s", question[question_number].sentence);
