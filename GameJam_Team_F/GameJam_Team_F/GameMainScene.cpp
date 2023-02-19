@@ -11,7 +11,10 @@ GameMainScene::GameMainScene()
 	LifeImage = LoadGraph("Image/life.png");
 	QuestionBox = LoadGraph("Image/QuestionBox.png");
 	PQuestionBox = LoadGraph("Image/PQuestionBox.png");
+	LoadDivGraph("Image/MenheraMap.png",4,4,1,100,100, MenheraImage);
 
+	MenheraCount = 0;
+	MaxWink = 120;
 
 	life = 3;
 
@@ -51,6 +54,32 @@ GameMainScene::GameMainScene()
 
 AbstractScene* GameMainScene::Update()
 {
+	if (MenheraCount++ >= MaxWink) {
+		MenheraCount = 0;
+	}
+
+	if (MenheraCount <=6) {
+		MImage = 0;
+	}
+	else if (MenheraCount <= 10) {
+		MImage = 1;
+	}
+	else if (MenheraCount <= 15) {
+		MImage = 2;
+	}
+	else if (MenheraCount <= 24) {
+		MImage = 3;
+	}
+	else if (MenheraCount <= 30) {
+		MImage = 2;
+	}
+	else if (MenheraCount <= 36) {
+		MImage = 1;
+	}
+	else if(MenheraCount <=120){
+		MImage = 0;
+		MaxWink = rand() % 200 + 120;
+	}
 
 	wait_time++;
 
@@ -83,8 +112,11 @@ AbstractScene* GameMainScene::Update()
 void GameMainScene::Draw() const
 {
 
-//背景
-	DrawBox(350, 100, 650, 500, 0x553333, true);
+//メンヘラ
+	//DrawBox(350, 100, 650, 500, 0x553333, true);
+	int ImageXX = 400;
+	
+	DrawExtendGraph(350, 100, 350 + ImageXX, 100 + ImageXX, MenheraImage[MImage], true);
 
 //life表示
 	for (int i = 0; i < life; i++)

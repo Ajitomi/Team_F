@@ -14,6 +14,10 @@ private:
 	int LifeImage;
 	int QuestionBox;
 	int PQuestionBox;
+	int MenheraImage[4];
+	int MImage;
+	int MenheraCount;
+	int MaxWink;
 
 
 
