@@ -16,6 +16,7 @@ GameMainScene::GameMainScene()
 
 	MenheraCount = 0;
 	MaxWink = 120;
+	MImage = 0;
 
 	life = 3;
 
