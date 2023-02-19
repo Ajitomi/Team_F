@@ -1,4 +1,5 @@
 #include "GameOver.h"
+#include "Title.h"
 
 //コンストラクタ
 GameOverScene::GameOverScene(){
@@ -26,13 +27,42 @@ GameOverScene::~GameOverScene() {
 
 AbstractScene* GameOverScene::Update()
 {
-	AbstractScene* sc = this;
 
-	clickButton(sc);
+	//矢印上下キー
+	if (CheckHitKey(KEY_INPUT_UP) != 0 || CheckHitKey(KEY_INPUT_DOWN) != 0) {
+		if (waitFrame <= 0) {
+			PlaySoundMem(sounds.Move, DX_PLAYTYPE_BACK);
+			selecter *= -1;
+			selecterPos(selecter);
+			waitFrame = 10;
+		}
+		else {
+			if (--waitFrame < 0) {
+				waitFrame = 0;
+			}
+		}
+	}
+	else {
+		waitFrame = 0;
+	}
 
 	if (++cntFrame > 30) cntFrame = 30;
 
-	return sc;
+	if (CheckHitKey(KEY_INPUT_RETURN) != 0) {
+		if (selecter == 1) {
+			PlaySoundMem(sounds.Select, DX_PLAYTYPE_BACK);
+			WaitTimer(1000);
+
+			StopSoundMem(sounds.BGM);
+			//タイトルへ
+			return new Title();
+		}
+		else {
+			//終了
+			End();
+		}
+	}
+	return this;
 }
 
 void GameOverScene::Draw() const{
@@ -73,49 +103,6 @@ void GameOverScene::Draw() const{
 			bloodImages[i]->image, true);
 	}
 
-}
-
-void GameOverScene::clickButton(AbstractScene* sc) {
-
-	//強制終了
-	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)	
-	{
-		End();
-	}
-
-	//矢印上下キー
-	if (CheckHitKey(KEY_INPUT_UP) != 0 || CheckHitKey(KEY_INPUT_DOWN) != 0) {
-		if (waitFrame <= 0) {
-			PlaySoundMem(sounds.Move, DX_PLAYTYPE_BACK);
-			selecter *= -1;
-			selecterPos(selecter);
-			waitFrame = 10;
-		}
-		else {
-			if (--waitFrame < 0) {
-				waitFrame = 0;
-			}
-		}
-	}
-	else {
-		waitFrame = 0;
-	}
-
-	if (CheckHitKey(KEY_INPUT_RETURN) != 0) {
-		if (selecter == 1) {
-			PlaySoundMem(sounds.Select, DX_PLAYTYPE_BACK);
-			WaitTimer(1000);
-
-			StopSoundMem(sounds.BGM);
-			//タイトルへ
-			End();
-			//sc = 
-		}
-		else {
-			//終了
-			End();
-		}
-	}
 }
 
 void GameOverScene::End() {

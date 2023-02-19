@@ -41,8 +41,6 @@ public:
 
 	void Draw() const override;
 
-	void clickButton(AbstractScene* sc);
-
 	void selecterPos(int num);
 
 	void End();
