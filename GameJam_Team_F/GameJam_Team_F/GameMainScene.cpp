@@ -1,6 +1,8 @@
 ﻿#include "GameMainScene.h"
 #include "DxLib.h"
 #include "KeyManager.h"
+#include"GameClear.h"
+#include "GameOver.h"
 
 int wait_time = 0;
 
@@ -99,11 +101,13 @@ AbstractScene* GameMainScene::Update()
 	if (question_count > 7 && life > 0)
 	{
 		//GameClear
+		return new GameClear();
 	}
 
 	if (life <= 0)
 	{
 		//GameOver
+		return new GameOverScene();
 	}
 
 	return this;
