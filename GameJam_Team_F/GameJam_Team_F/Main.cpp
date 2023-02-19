@@ -1,6 +1,6 @@
 #include "DxLib.h"
 #include "SceneManager.h"
-#include"GameClear.h"
+#include "GameMainScene.h"
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -13,7 +13,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	SetDrawScreen(DX_SCREEN_BACK);	//描画先画面を裏に
 
-	SceneManager scene_mng(new GameClear());
+	SceneManager scene_mng(new GameMainScene());
 
 	//ゲームループ
 	while ((ProcessMessage() == 0) && (scene_mng.Update() != nullptr))
@@ -22,7 +22,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ClearDrawScreen();	//画面の初期化
 
 		scene_mng.Draw();
-		
 
 		ScreenFlip();	//裏画面の内容を表画面に反映
 	}
