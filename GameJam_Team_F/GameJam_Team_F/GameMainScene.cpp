@@ -4,8 +4,6 @@
 #include"GameClear.h"
 #include "GameOver.h"
 
-int wait_time = 0;
-
 GameMainScene::GameMainScene()
 {
 	
@@ -108,10 +106,6 @@ AbstractScene* GameMainScene::Update()
 	{
 		answer_namber = 3;
 	}
-	else if (KeyManager::OnClick(KEY_INPUT_4) && question_flag == true)
-	{
-		answer_namber = 4;
-	}
 
 	if (answer_namber == question[question_number].correct)
 	{
@@ -146,8 +140,7 @@ AbstractScene* GameMainScene::Update()
 void GameMainScene::Draw() const
 {
 
-//メンヘラ
-	//DrawBox(350, 100, 650, 500, 0x553333, true);
+
 	int ImageXX = 400;
 	
 	DrawExtendGraph(350, 100, 350 + ImageXX, 100 + ImageXX, MenheraImage[MImage], true);
@@ -155,14 +148,12 @@ void GameMainScene::Draw() const
 //life表示
 	for (int i = 0; i < life; i++)
 	{
-		//DrawCircle((i * 100) + 50, 50, 40, 0x997777, true);
 		DrawGraph((i * 100) + 10, 10, LifeImage, true);
 	}
 
 //問題枠
 
 	DrawBox(750, 150, 1200, 350, 0x222222, true);
-	//DrawGraph(750, 150, QuestionBox, true);
 	DrawExtendGraph(750, 150, 1200, 350, QuestionBox, true);
 
 //選択肢枠
@@ -174,8 +165,6 @@ void GameMainScene::Draw() const
 	MaxQuestion = 3;
 	QuestionPadding = 20;
 	QuestioRange = ((1280 - 100) / MaxQuestion) - QuestionPadding;
-
-
 
 	for (int i = 0; i < MaxQuestion; i++)
 	{

@@ -48,7 +48,7 @@ AbstractScene* GameOverScene::Update()
 
 	if (++cntFrame > 30) cntFrame = 30;
 
-	if (CheckHitKey(KEY_INPUT_RETURN) != 0) {
+	if (CheckHitKey(KEY_INPUT_SPACE) != 0) {
 		if (selecter == 1) {
 			PlaySoundMem(sounds.Select, DX_PLAYTYPE_BACK);
 			WaitTimer(1000);
